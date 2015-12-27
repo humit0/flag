@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Flag by humit0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Flag</h1>
+      <h2 class="project-tagline">Simple javascript notifications. A beautiful replacement for JavaScript&#39;s &quot;alert&quot;</h2>
+      <a href="https://github.com/humit0/flag" class="btn">View on GitHub</a>
+      <a href="https://github.com/humit0/flag/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/humit0/flag/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="flag-01" class="anchor" href="#flag-01" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://flag.hax0r.info">Flag</a> <sup><a href="http://flag.hax0r.info">0.1</a><sup></sup></sup>
+</h1>
+
+<p><strong>flag is Javascript library for non-blocking notifications. this plugin don't need to jquery library</strong> <img class="emoji" title=":airplane:" alt=":airplane:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2708.png" height="20" width="20" align="absmiddle"></p>
+
+<p>Refer to the <a href="http://flag.hax0r.info">Flag website</a> for examples. check it.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/10232178/12007458/b35b4552-ac48-11e5-9cc7-216e447c9490.gif" alt="simple flag pic"></p>
+
+<h1>
+<a id="current-version" class="anchor" href="#current-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Version</h1>
+
+<p>0.1</p>
+
+<h1>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+
+<ul>
+<li>fast</li>
+<li>support ie7+</li>
+<li>simple design</li>
+<li>many options and methods support</li>
+<li>Lightweight, no dependencies</li>
+</ul>
+
+<h1>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h1>
+
+<p>If you want to use <strong><em>flag</em></strong>, you need to load javascript &amp; css file.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>_flag.css<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>_flag.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Before using this function, you need to set position. If you don't initialize position, then flags are located in top-right of your screen.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">init</span>(); <span class="pl-c">// default position is top-right.</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(<span class="pl-s"><span class="pl-pds">'</span>right<span class="pl-pds">'</span></span>); <span class="pl-c">// set flag position right.</span></pre></div>
+
+<p>If you want to change position after you call <code>flag.init()</code>, use <code>flag.setPos()</code> function.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">setPos</span>(<span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>); <span class="pl-c">// set flag position center.</span></pre></div>
+
+<p>After you set position, you can make <strong><em>flag</em></strong> by using under 4 methods with <em>message</em>, <em>title</em>, <em>size</em> parameter.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>); <span class="pl-c">// info type</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>big<span class="pl-pds">'</span></span>); <span class="pl-c">// success type</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warning<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>small<span class="pl-pds">'</span></span>); <span class="pl-c">// warning type</span>
+<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>); <span class="pl-c">// error type</span></pre></div>
+
+<p><strong><em>flag</em></strong> will remove in 5 seconds. If you want to remove it immediately, just click <strong><em>flag</em></strong> which you want to remove. You can remove all <strong><em>flag</em></strong> by calling <code>flag.clean()</code>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">clean</span>(); <span class="pl-c">// clear all flags.</span></pre></div>
+
+<h1>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h1>
+
+<ul>
+<li>Choose the flag position &amp; size.</li>
+<li>Browse website without annoying alert box and sound.</li>
+<li>Know message type immediately by watching flag color.</li>
+</ul>
+
+<h1>
+<a id="callbacks-methods" class="anchor" href="#callbacks-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callbacks&amp; Methods</h1>
+
+<h2>
+<a id="initialize" class="anchor" href="#initialize" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialize</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// flag.init({position});</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(); <span class="pl-c">// default position is top-right.</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(<span class="pl-s"><span class="pl-pds">'</span>top-left<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>We provide 5 positions(<code>top-left</code>, <code>top-right</code>, <code>left</code>, <code>right</code>, <code>center</code>) to initialize. If you don't pass any <em>position</em> parameter on this function, then it works like <code>top-right</code> option.</p>
+
+<h2>
+<a id="change-flag-position" class="anchor" href="#change-flag-position" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change flag position</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.setPos({position});</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">setPos</span>(<span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>We provide 5 positions(<code>top-left</code>, <code>top-right</code>, <code>left</code>, <code>right</code>, <code>center</code>) to set flag position.</p>
+
+<h2>
+<a id="make-flag" class="anchor" href="#make-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make flag</h2>
+
+<p>There are 4 types(<code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code>) to make flag. You can pass 3 parameters at most, and ignore <code>title</code>, or <code>size</code> parameters. <code>size</code> parameter can be 3 options(<code>big</code>, <code>middle</code>, <code>small</code>) and default value is <code>middle</code>.</p>
+
+<h3>
+<a id="make-info-flag" class="anchor" href="#make-info-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make info flag</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.info({message}, {title}, {size});</span>
+<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Info</em>'.</p>
+
+<h3>
+<a id="make-success-flag" class="anchor" href="#make-success-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make success flag</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.success({message}, {title}, {size});</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>big<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Success</em>'.</p>
+
+<h3>
+<a id="make-warning-flag" class="anchor" href="#make-warning-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make warning flag</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.warning({message}, {title}, {size});</span>
+<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warn<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>small<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warn<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Warning</em>'.</p>
+
+<h3>
+<a id="make-error-flag" class="anchor" href="#make-error-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make error flag</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.error({message}, {title}, {size});</span>
+<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>);
+<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Error</em>'.</p>
+
+<h2>
+<a id="remove-all-flags" class="anchor" href="#remove-all-flags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove all flags</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">clean</span>();</pre></div>
+
+<p>You can remove all flags in your website.</p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>You are free to use this in any way you want, in case you find this useful or working for you but you must keep the copyright notice and license.
+The MIT License (MIT)</p>
+
+<h1>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
+
+<p>if you have something, please contact me</p>
+
+<ul>
+<li>Author : Hax0r('우영준')&amp;humit0('장준호')</li>
+<li>mail : a at hax0r.info or <a href="mailto:jhjang1005@naver.com">jhjang1005@naver.com</a>
+</li>
+<li>Issue Reports : <a href="https://github.com/webhacking/flag/issues">https://github.com/webhacking/flag/issues</a>
+</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/humit0/flag">Flag</a> is maintained by <a href="https://github.com/humit0">humit0</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
