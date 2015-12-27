@@ -1,186 +1,402 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Flag by humit0</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Flag</h1>
-      <h2 class="project-tagline">Simple javascript notifications. A beautiful replacement for JavaScript&#39;s &quot;alert&quot;</h2>
-      <a href="https://github.com/humit0/flag" class="btn">View on GitHub</a>
-      <a href="https://github.com/humit0/flag/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/humit0/flag/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="Content-Script-Type" content="text/javascript">
+      <meta http-equiv="Content-Style-Type" content="text/css">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>flag is Javascript library for non-blocking notifications. this plugin don't need to jquery library</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> <!--부트스트랩 CND이용-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="_flag.css" />
+    </head>
+    <style type="text/css">
+    body{opacity:0;transition: opacity .35s ease-in-out; -moz-transition: opacity .35s ease-in-out; -webkit-transition: opacity .35s ease-in-out}
+    body.loaded{opacity:1}
+    .btn-outline {margin-top: 15px; margin-bottom: 15px; padding: 18px 24px; font-size: inherit; font-weight: 500; color: #fff; background-color: transparent; border-color: #fff; border-color: rgba(255,255,255,.5); transition: all .1s ease-in-out}
 
-    <section class="main-content">
-      <h1>
-<a id="flag-01" class="anchor" href="#flag-01" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://flag.hax0r.info">Flag</a> <sup><a href="http://flag.hax0r.info">0.1</a><sup></sup></sup>
-</h1>
+    #_d {overflow: hidden; position:relative; min-height: 300px; max-height:300px; background-color: #333;border-bottom: 1px solid rgba(0, 0, 0, 0.65)}
+    #_d a {font-weight: 500; color: #fff; transition: all .1s ease-in-out;}
+    #_d>.container{padding-top:100px;position: relative; z-index: 95}
+    #_d>.container *{color:#fff}
+    ._os {position: absolute; background-color: #000; width: 100%; height: 100%; opacity: .6;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* IE 5-7 */ filter: alpha(opacity=60)}
+    .kr {overflow: hidden; position: absolute; right: 0; top: 0; left: 0; bottom: 0}
+    .kr>video.flag-demo-videos{height: auto; width: 100%; position: absolute}
+    .vm_box{position: relative; min-height: 500px; border: 1px solid #ccc; background-color: rgba(204, 204, 204, 0.08); margin-top: 10px}
+    .vm_box .op {padding:15px}
+    .vm_box .op-top{overflow: hidden; position: relative; padding: 15px 0px 15px 0px; min-height: 300px; border: 1px solid rgba(204, 204, 204, 0.33)}
+    .vm_box .op-bottom{overflow: hidden; position: relative; margin-top:10px;padding: 15px 0px 15px 0px; min-height: 30px; border: 1px solid rgba(204, 204, 204, 0.33)}
+    .vm_box .form-control {width:100%}
+    .vm_box label.radio {min-height: 20px; padding-left: 20px}
+    .footer{margin: 10px 0px 10px 0px}
+    .doc>h2{border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px}
+    .doc .demo { position: relative; height: auto}
+    .doc .demo-tit{overflow: hidden; position: relative; width: 100%; height: auto; margin-bottom: 20px}
+    .new-line{margin-bottom: 20px}
+    /* http://prismjs.com/download.html?themes=prism-dark&languages=markup+css+clike+javascript */
 
-<p><strong>flag is Javascript library for non-blocking notifications. this plugin don't need to jquery library</strong> <img class="emoji" title=":airplane:" alt=":airplane:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2708.png" height="20" width="20" align="absmiddle"></p>
+    code[class*="language-"],
+    pre[class*="language-"] {
+    	color: white;
+    	text-shadow: 0 -.1em .2em black;
+    	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    	direction: ltr;
+    	text-align: left;
+    	white-space: pre;
+    	word-spacing: normal;
+    	word-break: normal;
+    	word-wrap: normal;
+    	line-height: 1.5;
 
-<p>Refer to the <a href="http://flag.hax0r.info">Flag website</a> for examples. check it.</p>
+    	-moz-tab-size: 4;
+    	-o-tab-size: 4;
+    	tab-size: 4;
 
-<p><img src="https://cloud.githubusercontent.com/assets/10232178/12007458/b35b4552-ac48-11e5-9cc7-216e447c9490.gif" alt="simple flag pic"></p>
+    	-webkit-hyphens: none;
+    	-moz-hyphens: none;
+    	-ms-hyphens: none;
+    	hyphens: none;
+    }
 
-<h1>
-<a id="current-version" class="anchor" href="#current-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Version</h1>
+    @media print {
+    	code[class*="language-"],
+    	pre[class*="language-"] {
+    		text-shadow: none;
+    	}
+    }
 
-<p>0.1</p>
+    pre[class*="language-"],
+    :not(pre) > code[class*="language-"] {
+    	background: hsl(30, 20%, 25%);
+    }
 
-<h1>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+    /* Code blocks */
+    pre[class*="language-"] {
+    	padding: 1em;
+    	margin: .5em 0;
+    	overflow: auto;
+    	border: .3em solid hsl(30, 20%, 40%);
+    	border-radius: .5em;
+    	box-shadow: 1px 1px .5em black inset;
+    }
 
-<ul>
-<li>fast</li>
-<li>support ie7+</li>
-<li>simple design</li>
-<li>many options and methods support</li>
-<li>Lightweight, no dependencies</li>
-</ul>
+    /* Inline code */
+    :not(pre) > code[class*="language-"] {
+    	padding: .15em .2em .05em;
+    	border-radius: .3em;
+    	border: .13em solid hsl(30, 20%, 40%);
+    	box-shadow: 1px 1px .3em -.1em black inset;
+    	white-space: normal;
+    }
 
-<h1>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h1>
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+    	color: hsl(30, 20%, 50%);
+    }
 
-<p>If you want to use <strong><em>flag</em></strong>, you need to load javascript &amp; css file.</p>
+    .token.punctuation {
+    	opacity: .7;
+    }
 
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>_flag.css<span class="pl-pds">"</span></span>&gt;
-&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>_flag.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+    .namespace {
+    	opacity: .7;
+    }
 
-<p>Before using this function, you need to set position. If you don't initialize position, then flags are located in top-right of your screen.</p>
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant,
+    .token.symbol {
+    	color: hsl(350, 40%, 70%);
+    }
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">init</span>(); <span class="pl-c">// default position is top-right.</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(<span class="pl-s"><span class="pl-pds">'</span>right<span class="pl-pds">'</span></span>); <span class="pl-c">// set flag position right.</span></pre></div>
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+    	color: hsl(75, 70%, 60%);
+    }
 
-<p>If you want to change position after you call <code>flag.init()</code>, use <code>flag.setPos()</code> function.</p>
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string,
+    .token.variable {
+    	color: hsl(40, 90%, 60%);
+    }
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">setPos</span>(<span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>); <span class="pl-c">// set flag position center.</span></pre></div>
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword {
+    	color: hsl(350, 40%, 70%);
+    }
 
-<p>After you set position, you can make <strong><em>flag</em></strong> by using under 4 methods with <em>message</em>, <em>title</em>, <em>size</em> parameter.</p>
+    .token.regex,
+    .token.important {
+    	color: #e90;
+    }
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>); <span class="pl-c">// info type</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>big<span class="pl-pds">'</span></span>); <span class="pl-c">// success type</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warning<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>small<span class="pl-pds">'</span></span>); <span class="pl-c">// warning type</span>
-<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>); <span class="pl-c">// error type</span></pre></div>
+    .token.important,
+    .token.bold {
+    	font-weight: bold;
+    }
+    .token.italic {
+    	font-style: italic;
+    }
 
-<p><strong><em>flag</em></strong> will remove in 5 seconds. If you want to remove it immediately, just click <strong><em>flag</em></strong> which you want to remove. You can remove all <strong><em>flag</em></strong> by calling <code>flag.clean()</code>.</p>
+    .token.entity {
+    	cursor: help;
+    }
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">clean</span>(); <span class="pl-c">// clear all flags.</span></pre></div>
+    .token.deleted {
+    	color: red;
+    }
+    </style>
+    <body>
+      <div id="_d">
+        <div class="kr duble combo">
+          <video controls="controls" autoplay="autoplay" loop="loop" class="flag-demo-videos">
+            <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"><!--임시 -->
+          </video>
+        </div>
+        <div class="_os">
+        </div>
+        <div class="container">
+          <div class="row text-center">
+            <h1>Flag</h1>
+            <p class="description">
+              flag is Javascript library for non-blocking notifications. very coool and fast!
+            </p>
+            <p>
+              <a class="btn btn-outline btn-lg" target="_blank" href="https://github.com/JangandWoo/flag">
+                <span class="fa fa-github"></span>
+                View on GitHub
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+        <div class="container">
+         <div class="page-header">
+           <h1>flag javascript library</h1>
+         </div>
+         <p class="lead">flag is Javascript library for non-blocking notifications. this plugin don't need to jquery library<span class="label label-success" style="margin-left:5px">Support ie7+</span></p>
+         <p class="lead">
+             check this library repo. here <a href="https://github.com/JangandWoo/flag" target="_blank">https://github.com/JangandWoo/flag</a>
+         </p>
+         <!-- S : 테스트 박스 -->
+         <div class="vm_box new-line">
+          <div class="op">
+            <form name="testForm" action="#">
+              <div class="op-top">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="title" name="title" class="input">
+                  </div>
+                  <div class="form-group">
+                    <textarea name="content" class="form-control" rows="10" placeholder="here your message !"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="control-group">
+                    <label class="control-label">Options</label>
+                    <div class="controls">
+                      <label class="radio">
+                            <input type="radio" name="position" value="success" checked="">Beta
+                      </label>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Position</label>
+                    <div class="controls">
+                      <label class="radio">
+                            <input type="radio" name="position" value="top-right" checked="">top-right
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="top-left" checked="">top-left
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="center" checked="">center
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="right" checked="">right
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="left" checked="">left
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="bottom-right" checked="">bottom-right
+                      </label>
+                      <label class="radio">
+                            <input type="radio" name="position" value="bottom-left" checked="">bottom-left
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="op-bottom">
+                <div class="col-md-8 col-md-offset-2">
+                  <button type="button" id="run" class="btn btn-primary btn-block">Run!</button>
+                </div>
+              </div>
+            </form>
+          </div>
+         </div>
+         <!-- E : 테스트 박스 -->
+         <div class="doc new-line">
+           <div class="demo-tit">
+             <h2>download flag.js</h2>
+           </div>
+           <div class="col-md-12">
+             <a href="https://github.com/JangandWoo/flag/archive/master.zip" class="btn btn-danger btn-block" id="download">Download 0.1 <span>(zip)</span></a>
+             <a href="https://github.com/JangandWoo/flag" class="btn btn-primary btn-block" id="download">Source<span>(Github)</span></a>
 
-<h1>
-<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h1>
+           </div>
+           <div class="demo-tit">
+             <h2>Examples</h2>
+           </div>
+           <!-- demo one -->
+           <div class="demo one">
+             <div class="col-md-6">
+               <button class="btn btn-info" id="try">Normal alert Try Me!</button>
+               <button class="btn btn-primary" id="try">Flag Library Try Me!</button>
+             </div>
+             <div class="col-md-6">
+               <pre>
+                 <code class="language-javascript">
+                  flag.info('yes i"m here');
+                 </code>
+               </pre>
+             </div>
+           </div>
+           <!-- demo two -->
+           <div class="demo one">
+             <div class="col-md-6">
+               <button class="btn btn-info" id="try">Normal alert Try Me!</button>
+               <button class="btn btn-primary" id="try">Flag Library Try Me!</button>
+             </div>
+             <div class="col-md-6">
+               <pre>
+                 <code class="language-javascript">
+                  flag.info('yes i"m here','your custom title');
+                 </code>
+               </pre>
+             </div>
+           </div>
+           <!-- demo one -->
+           <div class="demo one">
+             <div class="col-md-6">
+               <button class="btn btn-info" id="try" data-try="Nomal_one">Normal alert Try Me!</button>
+               <button class="btn btn-primary" id="try" data-try="one">Flag Library Try Me!</button>
+             </div>
+             <div class="col-md-6">
+               <pre>
+                 <code class="language-javascript">
+                  flag.success('You clicked the button','good');
+                 </code>
+               </pre>
+             </div>
+           </div>
+           <!-- demo one -->
+           <div class="demo one">
+             <div class="col-md-6">
+               <button class="btn btn-info" id="try">Normal alert Try Me!</button>
+               <button class="btn btn-primary" id="try">Flag Library Try Me!</button>
+             </div>
+             <div class="col-md-6">
+               <pre>
+                 <code class="language-javascript">
+                  flag.info('yes i"m here');
+                 </code>
+               </pre>
+             </div>
+           </div>
 
-<ul>
-<li>Choose the flag position &amp; size.</li>
-<li>Browse website without annoying alert box and sound.</li>
-<li>Know message type immediately by watching flag color.</li>
-</ul>
+         </div>
+       </div>
+       <footer class="footer">
+         <div class="container">
+           <p class="text-muted">2015.12.24 currently version is 0.1</p>
+         </div>
+       </footer>
+        <script type="text/javascript" src="_flag.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+        <script type="text/javascript">
+        /* http://prismjs.com/download.html?themes=prism-dark&languages=markup+css+clike+javascript */
+        var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=_self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content),e.alias):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=t.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return t.util.clone(e)})}return e}},languages:{extend:function(e,n){var a=t.util.clone(t.languages[e]);for(var r in n)a[r]=n[r];return a},insertBefore:function(e,n,a,r){r=r||t.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==n)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return t.languages.DFS(t.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,n,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(n.call(e,l,e[l],a||l),"Object"!==t.util.type(e[l])||r[e[l]]?"Array"!==t.util.type(e[l])||r[e[l]]||(r[e[l]]=!0,t.languages.DFS(e[l],n,l,r)):(r[e[l]]=!0,t.languages.DFS(e[l],n,null,r)))}},plugins:{},highlightAll:function(e,n){for(var a,r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),l=0;a=r[l++];)t.highlightElement(a,e===!0,n)},highlightElement:function(n,a,r){for(var l,i,o=n;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=t.languages[l]),n.className=n.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=n.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=n.textContent,u={element:n,language:l,grammar:i,code:s};if(!s||!i)return t.hooks.run("complete",u),void 0;if(t.hooks.run("before-highlight",u),a&&_self.Worker){var g=new Worker(t.filename);g.onmessage=function(e){u.highlightedCode=e.data,t.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),t.hooks.run("after-highlight",u),t.hooks.run("complete",u)},g.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=t.highlight(u.code,u.grammar,u.language),t.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(n),t.hooks.run("after-highlight",u),t.hooks.run("complete",u)},highlight:function(e,a,r){var l=t.tokenize(e,a);return n.stringify(t.util.encode(l),r)},tokenize:function(e,n){var a=t.Token,r=[e],l=n.rest;if(l){for(var i in l)n[i]=l[i];delete n.rest}e:for(var i in n)if(n.hasOwnProperty(i)&&n[i]){var o=n[i];o="Array"===t.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],g=u.inside,c=!!u.lookbehind,f=0,h=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var d=r[p];if(r.length>e.length)break e;if(!(d instanceof a)){u.lastIndex=0;var m=u.exec(d);if(m){c&&(f=m[1].length);var y=m.index-1+f,m=m[0].slice(f),v=m.length,k=y+v,b=d.slice(0,y+1),w=d.slice(k+1),P=[p,1];b&&P.push(b);var A=new a(i,g?t.tokenize(m,g):m,h);P.push(A),w&&P.push(w),Array.prototype.splice.apply(r,P)}}}}}return r},hooks:{all:{},add:function(e,n){var a=t.hooks.all;a[e]=a[e]||[],a[e].push(n)},run:function(e,n){var a=t.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(n)}}},n=t.Token=function(e,t,n){this.type=e,this.content=t,this.alias=n};if(n.stringify=function(e,a,r){if("string"==typeof e)return e;if("Array"===t.util.type(e))return e.map(function(t){return n.stringify(t,a,e)}).join("");var l={type:e.type,content:n.stringify(e.content,a,r),tag:"span",classes:["token",e.type],attributes:{},language:a,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===t.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}t.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var n=JSON.parse(e.data),a=n.language,r=n.code,l=n.immediateClose;_self.postMessage(t.highlight(r,t.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var a=document.getElementsByTagName("script");return a=a[a.length-1],a&&(t.filename=a.src,document.addEventListener&&!a.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+        Prism.languages.markup={comment:/<!--[\w\W]*?-->/,prolog:/<\?[\w\W]+?\?>/,doctype:/<!DOCTYPE[\w\W]+?>/,cdata:/<!\[CDATA\[[\w\W]*?]]>/i,tag:{pattern:/<\/?(?!\d)[^\s>\/=.$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,inside:{tag:{pattern:/^<\/?[^\s>\/]+/i,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,inside:{punctuation:/[=>"']/}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:/&#?[\da-z]{1,8};/i},Prism.hooks.add("wrap",function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))}),Prism.languages.xml=Prism.languages.markup,Prism.languages.html=Prism.languages.markup,Prism.languages.mathml=Prism.languages.markup,Prism.languages.svg=Prism.languages.markup;
+        Prism.languages.css={comment:/\/\*[\w\W]*?\*\//,atrule:{pattern:/@[\w-]+?.*?(;|(?=\s*\{))/i,inside:{rule:/@[\w-]+/}},url:/url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,selector:/[^\{\}\s][^\{\};]*?(?=\s*\{)/,string:/("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,property:/(\b|\B)[\w-]+(?=\s*:)/i,important:/\B!important\b/i,"function":/[-a-z0-9]+(?=\()/i,punctuation:/[(){};:]/},Prism.languages.css.atrule.inside.rest=Prism.util.clone(Prism.languages.css),Prism.languages.markup&&(Prism.languages.insertBefore("markup","tag",{style:{pattern:/(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,lookbehind:!0,inside:Prism.languages.css,alias:"language-css"}}),Prism.languages.insertBefore("inside","attr-value",{"style-attr":{pattern:/\s*style=("|').*?\1/i,inside:{"attr-name":{pattern:/^\s*style/i,inside:Prism.languages.markup.tag.inside},punctuation:/^\s*=\s*['"]|['"]\s*$/,"attr-value":{pattern:/.+/i,inside:Prism.languages.css}},alias:"language-css"}},Prism.languages.markup.tag));
+        Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+        Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,number:/\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,"function":/[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i}),Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^\/])\/(?!\/)(\[.+?]|\\.|[^\/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,lookbehind:!0}}),Prism.languages.insertBefore("javascript","class-name",{"template-string":{pattern:/`(?:\\`|\\?[^`])*`/,inside:{interpolation:{pattern:/\$\{[^}]+\}/,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}}}),Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,lookbehind:!0,inside:Prism.languages.javascript,alias:"language-javascript"}}),Prism.languages.js=Prism.languages.javascript;
+        //IE6, Netscape 6+, Firefox, and Opera 7+
+        document.getElementsByClassName = function(cl) {
+          var retnode = [];
+          var elem = this.getElementsByTagName('*');
+          for (var i = 0; i < elem.length; i++) {
+            if((' ' + elem[i].className + ' ').indexOf(' ' + cl + ' ') > -1) retnode.push(elem[i]);
+          }
+          return retnode;
+        };
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(function(){
+            document.getElementsByTagName('body')[0].className = 'loaded'; //돔트리구성
+          },300)
+        });
+        //Test ground
+        flag.init('top-right');
+        flag.success("Welcome to flag library demo page", "Welcome");
+        document.getElementById('run').addEventListener('click',function(){
+          if(document.forms['testForm']['content'].value != ''){
+            switch (document.forms['testForm']['position'].value) {
+              case 'top-right':
+                flag.init('center');
+                console.log('top right');
+                break;
+              case 'top-left':
+                flag.init('top-left');
+                break;
+              case 'right':
+                flag.init('right');
+                break;
+              case 'left':
+                flag.init('left');
+                break;
+              case 'center':
+                flag.init('center');
+                break;
+            }
+            flag.init('top-right');
+            flag.success(document.forms['testForm']['content'].value, document.forms['testForm']['title'].value);
+          }else{
+            flag.error('please any message');
+            setTimeout(function(){
+              if(confirm('you want to display defaul message?')){
+                flag.success(document.forms['testForm']['content'].value, document.forms['testForm']['title'].value);
+              }
+            },500)
+          }
+        });
+        var _trys = document.getElementById('try');
+        for (var i = 0; i < _trys.length; i++) {
+            _trys[i].addEventListener('click',function(){
+              console.log('s');
+            },false);
+        }
 
-<h1>
-<a id="callbacks-methods" class="anchor" href="#callbacks-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callbacks&amp; Methods</h1>
+        //add ga(Opensource-flag)
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-<h2>
-<a id="initialize" class="anchor" href="#initialize" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialize</h2>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// flag.init({position});</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(); <span class="pl-c">// default position is top-right.</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">init</span>(<span class="pl-s"><span class="pl-pds">'</span>top-left<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>We provide 5 positions(<code>top-left</code>, <code>top-right</code>, <code>left</code>, <code>right</code>, <code>center</code>) to initialize. If you don't pass any <em>position</em> parameter on this function, then it works like <code>top-right</code> option.</p>
-
-<h2>
-<a id="change-flag-position" class="anchor" href="#change-flag-position" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change flag position</h2>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.setPos({position});</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">setPos</span>(<span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>We provide 5 positions(<code>top-left</code>, <code>top-right</code>, <code>left</code>, <code>right</code>, <code>center</code>) to set flag position.</p>
-
-<h2>
-<a id="make-flag" class="anchor" href="#make-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make flag</h2>
-
-<p>There are 4 types(<code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code>) to make flag. You can pass 3 parameters at most, and ignore <code>title</code>, or <code>size</code> parameters. <code>size</code> parameter can be 3 options(<code>big</code>, <code>middle</code>, <code>small</code>) and default value is <code>middle</code>.</p>
-
-<h3>
-<a id="make-info-flag" class="anchor" href="#make-info-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make info flag</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.info({message}, {title}, {size});</span>
-<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>info<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-c1">info</span>(<span class="pl-s"><span class="pl-pds">'</span>Info message.<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Info</em>'.</p>
-
-<h3>
-<a id="make-success-flag" class="anchor" href="#make-success-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make success flag</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.success({message}, {title}, {size});</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>big<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-en">success</span>(<span class="pl-s"><span class="pl-pds">'</span>Success message.<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Success</em>'.</p>
-
-<h3>
-<a id="make-warning-flag" class="anchor" href="#make-warning-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make warning flag</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.warning({message}, {title}, {size});</span>
-<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warn<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>small<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warn<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-en">warning</span>(<span class="pl-s"><span class="pl-pds">'</span>Warning message.<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Warning</em>'.</p>
-
-<h3>
-<a id="make-error-flag" class="anchor" href="#make-error-flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make error flag</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//flag.error({message}, {title}, {size});</span>
-<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>middle<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>);
-<span class="pl-smi">flag</span>.<span class="pl-c1">error</span>(<span class="pl-s"><span class="pl-pds">'</span>Error message.<span class="pl-pds">'</span></span>);</pre></div>
-
-<p>If you ignore <code>title</code>, then <code>title</code> would be set '<em>Error</em>'.</p>
-
-<h2>
-<a id="remove-all-flags" class="anchor" href="#remove-all-flags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove all flags</h2>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">flag</span>.<span class="pl-en">clean</span>();</pre></div>
-
-<p>You can remove all flags in your website.</p>
-
-<h1>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
-
-<p>You are free to use this in any way you want, in case you find this useful or working for you but you must keep the copyright notice and license.
-The MIT License (MIT)</p>
-
-<h1>
-<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
-
-<p>if you have something, please contact me</p>
-
-<ul>
-<li>Author : Hax0r('우영준')&amp;humit0('장준호')</li>
-<li>mail : a at hax0r.info or <a href="mailto:jhjang1005@naver.com">jhjang1005@naver.com</a>
-</li>
-<li>Issue Reports : <a href="https://github.com/webhacking/flag/issues">https://github.com/webhacking/flag/issues</a>
-</li>
-</ul>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/humit0/flag">Flag</a> is maintained by <a href="https://github.com/humit0">humit0</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+        ga('create', 'UA-71777614-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+    </body>
 </html>
